@@ -1,0 +1,28 @@
+The following has been added to this template
+- Webpack
+  - webpack-dev-server (allows us to run a server and build webpack efficiently)
+    -npm run (to start server)
+  - html-webpack-plugin (builds html files)
+  - csv-loader, xml-loader, style-loader, css-loader (loaders for files. not sure if we need this)
+  - inline-source-map (helps with debugging)
+
+-eslint
+  - need to initialize it with this (./node_modules/.bin/eslint --init)
+  - you should install eslint extension on vscode
+  - current rules are ignoring newline and dist folder
+  -formatting on save
+    -{
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "eslint.validate": ["javascript"]
+    }
+
+-prettier
+  -ignored a few files
+  -npx prettier . --check (checks to see what could be edited)
+  -npx prettier . --write (makes pretty changes)
+
+-eslint-config-prettier
+  -npx eslint-config-prettier .\src\index.js (run this to check what rules interfere)
+
