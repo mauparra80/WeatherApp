@@ -100,7 +100,7 @@ function extractCurrentWeather(rawWeatherData){
 
 async function retrieveWeather(location){
   try{
-  const jsonData = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=3&aqi=no&alerts=no`);
+  const jsonData = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=3&aqi=no&alerts=no`);
   const weatherData = await jsonData.json();
   return weatherData;
   } catch (error) { console.error('Error fetching weather data: ', error.message);
