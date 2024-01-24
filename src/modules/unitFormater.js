@@ -55,7 +55,6 @@ function toggleUnits(weatherArray){
 export const unitFormater = {
   init() {
     toggleUnits(APImanager.getCurrentWeatherArray());
-    console.log(formatedTempUnits);
   },
 
   getFormatedTemp(){

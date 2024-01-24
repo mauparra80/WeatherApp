@@ -5,7 +5,6 @@ import {unitFormater} from "./unitFormater";
 function renderCurrent(currentWeather){
   // get formated units first
   const formatedTemp = unitFormater.getFormatedTemp();
-  console.log(formatedTemp);
 
   // render current temps
   document.querySelector('#condition').textContent = currentWeather.condition_text;

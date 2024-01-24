@@ -63,9 +63,6 @@ const currentWeatherArray = {
 
 // extract and save weather data to object
 function extractCurrentWeather(rawWeatherData){
-  console.log(rawWeatherData.location);
-  console.log(rawWeatherData.current.temp_c);
-
   currentWeatherArray.temperature_c = rawWeatherData.current.temp_c;
   currentWeatherArray.temperature_f = rawWeatherData.current.temp_f;
   currentWeatherArray.condition_text  = rawWeatherData.current.condition.text;

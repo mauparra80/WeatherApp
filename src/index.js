@@ -32,10 +32,19 @@ APImanager.init()
 // searchbar
 const locationInput = document.querySelector('#locationInput');
 const submitBtn = document.querySelector("#submitLocation");
+function submitLocation(){
+  if (locationInput.value !== '') {
+    APImanager.fetchWeather(locationInput.value);
+  }
+}
 // get input, fetch weather, then print weather
 submitBtn.addEventListener('click', () => {
-  if(locationInput.value !== ''){
-    APImanager.fetchWeather(locationInput.value);
+  submitLocation();
+})
+locationInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault(); // Prevents the default behavior of Enter in a textarea
+    submitLocation();
   }
 })
 
@@ -45,4 +54,6 @@ unitBtn.addEventListener('click', () => {
   unitFormater.toggleTempUnits();
   render.renderAll(APImanager.getCurrentWeatherArray());
 })
+
+
 
