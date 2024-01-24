@@ -1,27 +1,34 @@
 
+import {unitFormater} from "./unitFormater";
+
 // private
 function renderCurrent(currentWeather){
+  // get formated units first
+  const formatedTemp = unitFormater.getFormatedTemp();
+  console.log(formatedTemp);
+
+  // render current temps
   document.querySelector('#condition').textContent = currentWeather.condition_text;
   document.querySelector('#condition-icon').src = currentWeather.condition_icon;
-  document.querySelector('#temperature').textContent = currentWeather.temperature_f; // needs to be updated to use c/f
+  document.querySelector('#temperature').textContent = formatedTemp.currentTemp;
   document.querySelector('#wind').textContent = `${currentWeather.wind_mph} ${currentWeather.wind_dir}`;
   document.querySelector('#humidity').textContent = currentWeather.humidity;
 
-  // update location and time
+  // render location and time
   document.querySelector('#name').textContent = currentWeather.name;
   document.querySelector('#region').textContent = currentWeather.region;
   document.querySelector('#country').textContent = currentWeather.country;
   document.querySelector('#date').textContent = currentWeather.date;
   document.querySelector('#time').textContent = currentWeather.time;
 
-  // update forecast
+  // render forecast
   for (let i = 0; i < 3; i++){
     const curDay = document.querySelector(`#day${i+1}`);
     curDay.querySelector('.date').textContent = currentWeather.forecast[i].date;
     curDay.querySelector('.condition-icon').src = currentWeather.forecast[i].condition_icon;
-    curDay.querySelector('.avgtemp').textContent = currentWeather.forecast[i].avgtemp_f;// need to select f/c temp
-    curDay.querySelector('.highlow .hightemp').textContent = currentWeather.forecast[i].hightemp_f;
-    curDay.querySelector('.lowtemp').textContent = currentWeather.forecast[i].lowtemp_f;
+    curDay.querySelector('.avgtemp').textContent = formatedTemp.formatedForecast[i].averageTemp
+    curDay.querySelector('.highlow .hightemp').textContent = formatedTemp.formatedForecast[i].highTemp;
+    curDay.querySelector('.lowtemp').textContent = formatedTemp.formatedForecast[i].lowTemp;
 
   }
 }

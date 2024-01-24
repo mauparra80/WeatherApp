@@ -1,4 +1,6 @@
+import { format, parseISO } from 'date-fns';
 import {render} from "./render";
+import {unitFormater} from './unitFormater';
 
 
 // private
@@ -80,7 +82,12 @@ function extractCurrentWeather(rawWeatherData){
 
   for (let i=0; i<3; i++)
   {
-    currentWeatherArray.forecast[i].date = rawWeatherData.forecast.forecastday[i].date;
+    // format date
+    const numericalDate = rawWeatherData.forecast.forecastday[i].date;
+    const parsedDate = parseISO(numericalDate);
+    currentWeatherArray.forecast[i].date = format(parsedDate, 'MMM do');
+
+
     currentWeatherArray.forecast[i].condition_icon = rawWeatherData.forecast.forecastday[i].day.condition.icon;
     currentWeatherArray.forecast[i].avgtemp_c = rawWeatherData.forecast.forecastday[i].day.avgtemp_c;
     currentWeatherArray.forecast[i].avgtemp_f = rawWeatherData.forecast.forecastday[i].day.avgtemp_f;
@@ -108,7 +115,14 @@ async function retrieveWeather(location){
 // public
 export const APImanager = {
   init(){
-    this.fetchWeather("houston");
+    this.fetchWeather("houston")
+      .then(() => {
+        unitFormater.init();
+        render.renderAll(currentWeatherArray);
+      })
+      .catch(error => {
+      console.error('Error during initialization:', error);
+      });
   },
   
   // fetch current weather from weatherapi.com
@@ -118,6 +132,9 @@ export const APImanager = {
       render.renderAll(currentWeatherArray);
   },
 
+  getCurrentWeatherArray(){
+    return currentWeatherArray;
+  }
   
 
  
