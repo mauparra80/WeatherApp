@@ -1,11 +1,79 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <h1>Testing template</h1>
-<script defer src="bundle.js"></script></body>
+  <head>
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto&family=Shizuru&family=Urbanist:wght@300&display=swap" rel="stylesheet">
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    
+    <div class="controls">
+      <div class="locationInput-container">
+        <label for="locationInput">location</label>
+        <input type="text" name="locationInput" id="locationInput" value="houston" placeholder="City,Zip">
+        <button type="submit" id="submitLocation">Submit</button>
+      </div>
+      <div class="unitToggle-container">
+        <h2 id="unitToggle">F</h2>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="weather-container large-container">
+        <p id="condition"></p>
+        <img src="" alt="" id="condition-icon">
+        <h3 id="temperature"></h3>
+        <h4 id="wind"></h4>
+        <h4 id="humidity"></h4>
+      </div>
+
+      <div class="locationInfo-container large-container">
+        <div class="location-container">
+          <h3 id="name"></h3>
+          <h3 id="region"></h3>
+          <h4 id="country"></h4>
+          <p id="coordinates"></p>
+        </div>
+        <div class="time-container">
+          <h3 id="time"></h3>
+          <h3 id="date"></h3>
+        </div>
+      </div>
+
+      <div class="forecast-container large-container">
+        <div class="forecast-day" id="day1">
+          <div class="date"></div>
+          <img src="" alt="" class="condition-icon">
+          <div class="avgtemp"></div>
+          <div class="highlow">
+            <div class="hightemp"></div>
+            <div class="lowtemp"></div>
+          </div>
+        </div>
+        <div class="forecast-day" id="day2">
+          <div class="date"></div>
+          <img src="" alt="" class="condition-icon">
+          <div class="avgtemp"></div>
+          <div class="highlow">
+            <div class="hightemp"></div>
+            <div class="lowtemp"></div>
+          </div>
+        </div>
+        <div class="forecast-day" id="day3">
+          <div class="date"></div>
+          <img src="" alt="" class="condition-icon">
+          <div class="avgtemp"></div>
+          <div class="highlow">
+            <div class="hightemp"></div>
+            <div class="lowtemp"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <script defer src="bundle.js"></script></body>
 </html>
